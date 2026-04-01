@@ -11,10 +11,10 @@ export function B2BPreview() {
               Evolución B2B
             </p>
             <h2 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.03em] md:text-4xl">
-              Una tienda pensada para vender también a negocio.
+              Una tienda pensada para vender también a negocios.
             </h2>
             <p className="mt-3 text-sm leading-7 text-[var(--color-muted)] md:text-base">
-              Además de la venta unitaria, esta propuesta deja ver cómo el ecommerce puede crecer a
+              Además de la venta unitaria, el ecommerce puede crecer a
               compra por caja, precios por volumen, atención comercial y flujo de recompra para salones
               y distribuidores.
             </p>
