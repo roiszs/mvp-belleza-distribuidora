@@ -9,17 +9,17 @@ import { formatPrice } from '@/lib/utils'
 
 const modeCopy = {
   b2c: {
-    eyebrow: 'Modo menudeo',
-    title: 'Compra personal y productos de alta rotación',
+    eyebrow: 'Menudeo',
+    title: 'Compra individual y productos de alta rotación',
     description:
-      'Una lectura clara para clientas que compran por pieza, por novedad o por estética.',
+      'Una vista clara para clientas que compran por pieza, por tono o por producto específico.',
     points: ['Compra unitaria', 'Promociones visibles', 'Productos nuevos', 'Navegación simple'],
   },
   b2b: {
-    eyebrow: 'Modo mayoreo',
-    title: 'Compra para negocio y reposición',
+    eyebrow: 'Mayoreo',
+    title: 'Compra para negocio, salón o reposición',
     description:
-      'Una vista pensada para salones, distribuidores y compras por caja o por volumen.',
+      'Una vista pensada para clientes que necesitan precio por volumen, compra por caja y recompra frecuente.',
     points: ['Precios por volumen', 'Caja 6 / 12 / 24+', 'Atención comercial', 'Recompra frecuente'],
   },
 } as const
@@ -33,10 +33,10 @@ export function CommerceModeShowcase() {
         <SectionHeader
           eyebrow="Modo visual"
           title="Compra como cliente o compra como negocio"
-          description="Una vista más clara de cómo puede evolucionar la tienda sin backend real todavía."
+          description="Una forma clara de mostrar cómo la tienda puede adaptarse a menudeo o mayoreo sin complicar la experiencia."
         />
 
-        <div className="overflow-hidden rounded-[28px] border border-[var(--color-line)] bg-white p-5 md:p-6">
+        <div className="overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-white p-5 md:p-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="rounded-full bg-[var(--color-soft)] p-1">
               <button
@@ -49,6 +49,7 @@ export function CommerceModeShowcase() {
               >
                 Menudeo
               </button>
+
               <button
                 onClick={() => setMode('b2b')}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
@@ -62,7 +63,7 @@ export function CommerceModeShowcase() {
             </div>
 
             <p className="text-sm text-[var(--color-muted)]">
-              Vista conceptual de pricing y volumen
+              Vista comercial simple y clara
             </p>
           </div>
 
@@ -106,7 +107,7 @@ export function CommerceModeShowcase() {
                 return (
                   <article
                     key={product.id}
-                    className="rounded-[22px] border border-[var(--color-line)] bg-[var(--color-bg)] p-3 transition duration-300 hover:-translate-y-1"
+                    className="rounded-[22px] border border-[var(--color-line)] bg-[var(--color-bg)] p-3 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.04)]"
                   >
                     <div className="rounded-[18px] bg-white p-4">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">
@@ -121,6 +122,7 @@ export function CommerceModeShowcase() {
                         <p className="text-sm text-[var(--color-muted)]">
                           {mode === 'b2c' ? 'Precio menudeo' : 'Precio mayoreo'}
                         </p>
+
                         <p className="mt-1 text-xl font-semibold tracking-[-0.03em]">
                           {formatPrice(activePrice)}
                         </p>

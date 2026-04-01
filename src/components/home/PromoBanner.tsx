@@ -12,8 +12,8 @@ export function PromoBanner() {
                 Ofertas y promociones
               </p>
               <h2 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.03em] md:text-4xl">
-                Productos seleccionados con mejor precio para compra inmediata.
-              </h2>
+  PROMO TEST 456
+</h2>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
                 Desde gel semipermanente hasta decoración y herramientas, el objetivo es mostrar
                 promociones visibles sin romper la estética minimalista de la tienda.

@@ -8,10 +8,11 @@ export function NewArrivals() {
     <section className="section-padding">
       <Container>
         <SectionHeader
-          eyebrow="Productos"
-          title="Nuevos lanzamientos y favoritos"
-          description="La idea aquí es enseñar catálogo con una presentación más aspiracional, pero sin perder intención de compra."
+          eyebrow="Destacados"
+          title="Productos nuevos y favoritos del catálogo"
+          description="Una selección pensada para mostrar lo más buscado en gel, acrílico, decoración y herramientas."
         />
+
         <ProductGrid products={featuredProducts} />
       </Container>
     </section>

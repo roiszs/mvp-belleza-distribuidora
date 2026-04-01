@@ -17,8 +17,8 @@ export function Hero() {
             </p>
 
             <h1 className="font-display text-3xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-4xl md:text-5xl">
-              Catálogo profesional para uñas y salón
-            </h1>
+  HERO TEST 123
+</h1>
 
             <p className="mt-4 max-w-lg text-sm leading-7 text-[var(--color-muted)] md:text-base">
               Gel semipermanente, acrílico, tips, decoración y herramientas con una experiencia más limpia,
