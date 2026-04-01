@@ -36,7 +36,7 @@ export function CommerceModeShowcase() {
           description="Una forma clara de mostrar cómo la tienda puede adaptarse a menudeo o mayoreo sin complicar la experiencia."
         />
 
-        <div className="overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-white p-5 md:p-6">
+        <div className="overflow-hidden rounded-[20px] border border-[var(--color-line)] bg-white p-4 md:rounded-[24px] md:p-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="rounded-full bg-[var(--color-soft)] p-1">
               <button
@@ -67,7 +67,7 @@ export function CommerceModeShowcase() {
             </p>
           </div>
 
-          <div className="mt-6 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="mt-5 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] md:mt-6 md:gap-6">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
                 {modeCopy[mode].eyebrow}

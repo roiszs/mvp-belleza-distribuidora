@@ -10,15 +10,16 @@ export function Hero() {
       </div>
 
       <Container className="relative">
-        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <div className="max-w-xl">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
               Uñas · mayoreo · social commerce
             </p>
 
-            <h1 className="font-display text-3xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-4xl md:text-5xl">
-  HERO TEST 123
-</h1>
+            <p className="mt-4 max-w-lg text-sm leading-6 text-[var(--color-muted)] md:text-base md:leading-7">
+              Gel semipermanente, acrílico, tips, decoración y herramientas con una experiencia más limpia,
+              clara y preparada para crecer a menudeo, mayoreo y volumen.
+              </p>
 
             <p className="mt-4 max-w-lg text-sm leading-7 text-[var(--color-muted)] md:text-base">
               Gel semipermanente, acrílico, tips, decoración y herramientas con una experiencia más limpia,
@@ -32,18 +33,18 @@ export function Hero() {
               </Button>
             </div>
 
-            <div className="mt-7 grid gap-3 sm:grid-cols-3">
-              <div className="surface-card rounded-[20px] p-4">
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            <div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
                 <p className="text-xl font-semibold tracking-[-0.03em]">+120</p>
                 <p className="mt-1 text-sm text-[var(--color-muted)]">SKUs listos para escalar</p>
               </div>
 
-              <div className="surface-card rounded-[20px] p-4">
+              <div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
                 <p className="text-xl font-semibold tracking-[-0.03em]">B2C + B2B</p>
                 <p className="mt-1 text-sm text-[var(--color-muted)]">Experiencia comercial híbrida</p>
               </div>
 
-              <div className="surface-card rounded-[20px] p-4">
+              <div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
                 <p className="text-xl font-semibold tracking-[-0.03em]">Marketplace-ready</p>
                 <p className="mt-1 text-sm text-[var(--color-muted)]">Estructura lista para crecer</p>
               </div>

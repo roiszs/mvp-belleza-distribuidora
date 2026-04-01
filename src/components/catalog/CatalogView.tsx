@@ -58,7 +58,7 @@ if (activeTab === 'nuevo') {
 
 return (
 <div className="space-y-6">
-<div className="sticky top-20 z-20 rounded-[24px] border border-[var(--color-line)] bg-[rgba(255,255,255,0.92)] p-4 backdrop-blur-md">
+<div className="sticky top-16 z-30 rounded-[20px] border border-[var(--color-line)] bg-[rgba(250,247,242,0.96)] p-3 shadow-[0_10px_30px_rgba(43,33,28,0.06)] backdrop-blur-md md:rounded-[24px] md:p-4">
 <div className="flex flex-col gap-4">
 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
 <div className="flex flex-wrap gap-2">
@@ -83,7 +83,7 @@ className={`rounded-full px-4 py-2 text-sm font-semibold transition ${          
           placeholder="Buscar por producto, marca o categoría"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="min-h-[46px] rounded-full border border-[var(--color-line)] bg-white px-4 text-sm outline-none placeholder:text-[var(--color-muted)]"
+          className="min-h-[44px] rounded-full border border-[var(--color-line)] bg-white px-4 text-sm outline-none placeholder:text-[var(--color-muted)]"
         />
 
         <div className="flex flex-wrap gap-2">
@@ -105,7 +105,7 @@ className={`rounded-full px-4 py-2 text-sm font-semibold transition ${          
     </div>
   </div>
 
-  <div className="grid gap-4 rounded-[24px] border border-[var(--color-line)] bg-white p-5 md:grid-cols-3">
+  <div className="grid gap-3 rounded-[20px] border border-[var(--color-line)] bg-white p-4 md:grid-cols-3 md:gap-4 md:rounded-[24px] md:p-5">
     <div>
       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
         Compra más clara

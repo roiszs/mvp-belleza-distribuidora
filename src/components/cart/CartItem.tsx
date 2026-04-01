@@ -13,7 +13,8 @@ const imageSrc = product.images[0]
 const imageAlt = String(product.name)
 
 return (
-<article className="flex gap-4 rounded-[24px] border border-[var(--color-line)] bg-white p-4">
+<article className="rounded-[24px] border border-[var(--color-line)] bg-white p-4">
+<div className="flex flex-col gap-4 sm:flex-row">
 <div className="relative h-24 w-24 overflow-hidden rounded-[18px] bg-[#f1e8de]">
 <Image
 src={imageSrc}
@@ -22,7 +23,7 @@ fill
 className="object-cover"
 />
 </div>
-<div className="flex flex-1 flex-col justify-between gap-3">
+<div className="flex flex-1 flex-col justify-between gap-3"></div>
     <div>
       <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-muted)]">
         {product.brand}

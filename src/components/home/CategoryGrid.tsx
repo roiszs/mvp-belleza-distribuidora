@@ -21,7 +21,7 @@ export function CategoryGrid() {
               href="/catalogo"
               className="group surface-card overflow-hidden rounded-[24px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]"
             >
-              <div className="relative aspect-[4/4.7] overflow-hidden bg-[#efe5da]">
+              <div className="relative aspect-[4/4.2] overflow-hidden bg-[#efe5da] md:aspect-[4/4.7]">
                 <Image
                   src={category.image}
                   alt={category.name}
@@ -34,7 +34,7 @@ export function CategoryGrid() {
                 </div>
               </div>
 
-              <div className="p-4">
+              <div className="p-3.5 md:p-4">
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="text-base font-semibold tracking-[-0.02em]">
                     {category.name}
