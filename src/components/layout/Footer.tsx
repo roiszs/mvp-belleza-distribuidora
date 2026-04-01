@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-[var(--color-line)] bg-[#f7f1ea]">
       <Container className="grid gap-8 py-12 md:grid-cols-3">
         <div>
-          <p className="font-serif-display text-2xl">Belleza Pro</p>
+          <p className="font-serif-display text-2xl">Linsel</p>
           <p className="mt-3 max-w-sm text-sm leading-7 text-[var(--color-muted)]">
             Ecommerce visual-comercial pensado para evolucionar hacia una operación más robusta,
             moderna y escalable.

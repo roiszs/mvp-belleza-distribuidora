@@ -62,7 +62,7 @@ description="Una forma clara de mostrar cómo la tienda puede adaptarse a menude
           </button>
         </div>
 
-        <p className="text-sm text-[var(--color-muted)]">Vista comercial simple y clara</p>
+        <p className="text-sm text-[var(--color-muted)]">Tienes dos opciones</p>
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] md:mt-6 md:gap-6">
