@@ -58,7 +58,7 @@ if (activeTab === 'nuevo') {
 
 return (
 <div className="space-y-6">
-<div className="sticky top-16 z-30 rounded-[20px] border border-[var(--color-line)] bg-[rgba(250,247,242,0.96)] p-3 shadow-[0_10px_30px_rgba(43,33,28,0.06)] backdrop-blur-md md:rounded-[24px] md:p-4">
+<div className="rounded-[20px] border border-[var(--color-line)] bg-[rgba(250,247,242,0.96)] p-3 shadow-[0_10px_30px_rgba(43,33,28,0.06)] backdrop-blur-md md:sticky md:top-16 md:z-30 md:rounded-[24px] md:p-4">
 <div className="flex flex-col gap-4">
 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
 <div className="flex flex-wrap gap-2">
