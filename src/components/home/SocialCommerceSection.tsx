@@ -29,6 +29,7 @@ export function SocialCommerceSection() {
   return (
     <section className="section-padding pt-0">
       <Container>
+      <div className="section-soft rounded-[28px] p-5 md:p-8">
         <SectionHeader
           eyebrow="Canales"
           title="Instagram, Facebook y tienda trabajando juntos"
@@ -69,6 +70,7 @@ export function SocialCommerceSection() {
               </div>
             </article>
           ))}
+        </div>
         </div>
       </Container>
     </section>

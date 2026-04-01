@@ -26,6 +26,7 @@ export function CommunityProof() {
   return (
     <section className="section-padding">
       <Container>
+      <div className="section-tint rounded-[28px] p-5 md:p-8">
         <SectionHeader
           eyebrow="Reseñas"
           title="Lo que opinan nuestras clientas"
@@ -55,6 +56,7 @@ export function CommunityProof() {
               </div>
             </article>
           ))}
+        </div>
         </div>
       </Container>
     </section>

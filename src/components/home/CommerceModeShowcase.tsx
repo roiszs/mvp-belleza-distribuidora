@@ -36,8 +36,7 @@ title="Compra como cliente o compra como negocio"
 description="Una forma clara de mostrar cómo la tienda puede adaptarse a menudeo o mayoreo sin complicar la experiencia."
 />
 
-```
-    <div className="overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-white p-4 md:p-6">
+      <div className="section-soft overflow-hidden rounded-[24px] p-4 md:p-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="rounded-full bg-[var(--color-soft)] p-1">
           <button

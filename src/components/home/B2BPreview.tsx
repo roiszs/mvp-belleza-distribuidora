@@ -5,7 +5,7 @@ export function B2BPreview() {
   return (
     <section className="section-padding">
       <Container>
-        <div className="grid gap-6 rounded-[28px] border border-[var(--color-line)] bg-white p-6 md:grid-cols-[1fr_1fr] md:p-8">
+      <div className="section-soft grid gap-6 rounded-[28px] p-6 md:grid-cols-[1fr_1fr] md:p-8">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
               Evolución B2B
