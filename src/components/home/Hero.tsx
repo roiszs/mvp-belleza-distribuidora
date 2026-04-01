@@ -11,45 +11,47 @@ export function Hero() {
 
       <Container className="relative">
       <div className="grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-          <div className="max-w-xl">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
-              Uñas · mayoreo · social commerce
-            </p>
+      <div className="max-w-xl">
+<p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
+Uñas · mayoreo · social commerce
+</p>
 
-            <p className="mt-4 max-w-lg text-sm leading-6 text-[var(--color-muted)] md:text-base md:leading-7">
-              Gel semipermanente, acrílico, tips, decoración y herramientas con una experiencia más limpia,
-              clara y preparada para crecer a menudeo, mayoreo y volumen.
-              </p>
+<h1 className="font-display text-[2rem] font-semibold leading-[1.02] tracking-[-0.05em] text-[var(--color-text)] sm:text-[2.6rem] md:text-[3.2rem]">
+Belleza profesional
+<span className="block">para uñas</span>
+</h1>
 
-            <p className="mt-4 max-w-lg text-sm leading-7 text-[var(--color-muted)] md:text-base">
-              Gel semipermanente, acrílico, tips, decoración y herramientas con una experiencia más limpia,
-              clara y preparada para crecer a menudeo, mayoreo y volumen.
-            </p>
+<p className="mt-4 max-w-lg text-base leading-8 text-[var(--color-muted)] md:text-lg">
+Gel semipermanente, acrílico, tips, decoración y herramientas con una experiencia
+más limpia, clara y preparada para crecer a menudeo, mayoreo y volumen.
+</p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/catalogo">Explorar catálogo</Button>
-              <Button href="/b2b" variant="secondary">
-                Evolución B2B
-              </Button>
-            </div>
+<div className="mt-6 flex flex-wrap gap-3">
+<Button href="/catalogo">Explorar catálogo</Button>
+<Button href="/b2b" variant="secondary">
+Evolución B2B
+</Button>
+</div>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
-                <p className="text-xl font-semibold tracking-[-0.03em]">+120</p>
-                <p className="mt-1 text-sm text-[var(--color-muted)]">SKUs listos para escalar</p>
-              </div>
+<div className="mt-6 grid gap-3 sm:grid-cols-3">
+<div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
+<p className="text-xl font-semibold tracking-[-0.03em]">+120</p>
+<p className="mt-1 text-sm text-[var(--color-muted)]">SKUs listos para escalar</p>
+</div>
 
-              <div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
-                <p className="text-xl font-semibold tracking-[-0.03em]">B2C + B2B</p>
-                <p className="mt-1 text-sm text-[var(--color-muted)]">Experiencia comercial híbrida</p>
-              </div>
+<div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
+  <p className="text-xl font-semibold tracking-[-0.03em]">B2C + B2B</p>
+  <p className="mt-1 text-sm text-[var(--color-muted)]">Experiencia comercial híbrida</p>
+</div>
 
-              <div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
-                <p className="text-xl font-semibold tracking-[-0.03em]">Marketplace-ready</p>
-                <p className="mt-1 text-sm text-[var(--color-muted)]">Estructura lista para crecer</p>
-              </div>
-            </div>
-          </div>
+<div className="surface-card rounded-[18px] p-3 md:rounded-[20px] md:p-4">
+  <p className="text-xl font-semibold tracking-[-0.03em]">Marketplace-ready</p>
+  <p className="mt-1 text-sm text-[var(--color-muted)]">Estructura lista para crecer</p>
+</div>
+
+
+</div>
+</div>
 
           <div className="relative">
             <div className="surface-card overflow-hidden rounded-[28px] p-4">
