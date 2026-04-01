@@ -5,19 +5,25 @@ export function PromoBanner() {
   return (
     <section className="section-padding pt-0">
       <Container>
-        <div className="overflow-hidden rounded-[34px] bg-[var(--color-accent-dark)] px-6 py-10 text-white md:px-10 md:py-14">
+        <div className="overflow-hidden rounded-[28px] bg-[var(--color-accent-dark)] px-6 py-8 text-white md:px-8 md:py-10">
           <div className="grid items-center gap-6 md:grid-cols-[1.2fr_0.8fr]">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-white/70">Ofertas & promociones</p>
-              <h2 className="mt-4 font-serif-display text-3xl md:text-5xl">
-                Promociones visibles sin perder elegancia de marca.
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/70">
+                Ofertas y promociones
+              </p>
+              <h2 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-[-0.03em] md:text-4xl">
+                Productos seleccionados con mejor precio para compra inmediata.
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
-                El objetivo no es saturar. Es mostrar oportunidad comercial con una interfaz que siga viéndose premium.
+              <p className="mt-3 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
+                Desde gel semipermanente hasta decoración y herramientas, el objetivo es mostrar
+                promociones visibles sin romper la estética minimalista de la tienda.
               </p>
             </div>
+
             <div className="md:justify-self-end">
-              <Button href="/catalogo" variant="secondary">Ver promociones</Button>
+              <Button href="/catalogo" variant="light">
+                Ver promociones
+              </Button>
             </div>
           </div>
         </div>

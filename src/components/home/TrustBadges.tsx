@@ -3,19 +3,19 @@ import { Container } from '@/components/layout/Container'
 const items = [
   {
     title: 'Envíos nacionales',
-    text: 'Bloque visual preparado para mostrar paquetería, tiempos y cobertura.',
+    text: 'La tienda puede comunicar cobertura, tiempos y opciones de envío de una forma más clara.',
   },
   {
     title: 'Compra con confianza',
-    text: 'Jerarquía clara, producto bien presentado y señales de marca seria.',
+    text: 'Una mejor jerarquía visual ayuda a que el catálogo se sienta más ordenado y profesional.',
   },
   {
     title: 'Precios por volumen',
-    text: 'La interfaz deja ver cómo podrá crecer hacia mayoreo y compras recurrentes.',
+    text: 'La presentación del producto ya permite visualizar menudeo, mayoreo y volumen.',
   },
   {
-    title: 'Marketplace future-ready',
-    text: 'Sin integrarlo aún, el frontend ya comunica estructura para una operación más robusta.',
+    title: 'Escalable a marketplace',
+    text: 'La estructura visual deja ver que el ecommerce puede crecer a una operación más robusta.',
   },
 ]
 
@@ -25,9 +25,12 @@ export function TrustBadges() {
       <Container>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {items.map((item) => (
-            <div key={item.title} className="rounded-[28px] border border-[var(--color-line)] bg-white p-5">
-              <h3 className="text-base font-medium">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">{item.text}</p>
+            <div
+              key={item.title}
+              className="rounded-[24px] border border-[var(--color-line)] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]"
+            >
+              <h3 className="text-base font-semibold tracking-[-0.02em]">{item.title}</h3>
+              <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">{item.text}</p>
             </div>
           ))}
         </div>

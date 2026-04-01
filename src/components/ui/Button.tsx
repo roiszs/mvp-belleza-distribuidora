@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 type ButtonProps = {
   children: React.ReactNode
   href?: string
-  variant?: 'primary' | 'secondary' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'ghost' | 'light'
   className?: string
 }
 
@@ -16,11 +16,13 @@ export function Button({
 }: ButtonProps) {
   const styles = {
     primary:
-      'bg-[var(--color-accent-dark)] !text-white border border-[var(--color-accent-dark)] hover:bg-[#3a2d26] hover:!text-white',
+      'bg-[var(--color-accent-dark)] text-white border border-[var(--color-accent-dark)] hover:bg-[#3a2d26] hover:text-white',
     secondary:
-      'bg-white text-[var(--color-text)] border border-[var(--color-line)] hover:bg-[var(--color-soft)]',
+      'bg-white text-[var(--color-text)] border border-[var(--color-line)] hover:bg-[var(--color-soft)] hover:text-[var(--color-text)]',
     ghost:
-      'bg-transparent text-[var(--color-text)] border border-[var(--color-line)] hover:bg-white',
+      'bg-transparent text-[var(--color-text)] border border-[var(--color-line)] hover:bg-white hover:text-[var(--color-text)]',
+    light:
+      'bg-white text-[var(--color-accent-dark)] border border-white hover:bg-[#f6efe8] hover:text-[var(--color-accent-dark)]',
   }
 
   const base = cn(
