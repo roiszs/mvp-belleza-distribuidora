@@ -2,28 +2,28 @@ import { Container } from '@/components/layout/Container'
 import { SectionHeader } from '@/components/layout/SectionHeader'
 
 const channels = [
-  {
-    name: 'Instagram',
-    handle: '@bellezapro.mx',
-    title: 'Lanzamientos, estética de marca y comunidad',
-    stat: '+12k vistas en colección nueva',
-    points: ['Reels de aplicación', 'Looks de temporada', 'Contenido aspiracional'],
-  },
-  {
-    name: 'TikTok',
-    handle: '@bellezapro.shop',
-    title: 'Descubrimiento rápido y venta por impulso',
-    stat: '+35k reproducciones en top shades',
-    points: ['Demostraciones cortas', 'Tutoriales', 'Productos virales'],
-  },
-  {
-    name: 'Facebook',
-    handle: '/BellezaProMX',
-    title: 'Confianza, comunidad y recompra',
-    stat: '+280 interacciones en promos',
-    points: ['Promociones', 'Grupos de clientas', 'Atención comercial'],
-  },
-]
+    {
+      name: 'Instagram',
+      handle: '@linsel.mx',
+      title: 'Contenido de producto, lanzamientos y comunidad',
+      stat: 'Proveedor mayoreo con entregas locales y envíos nacionales',
+      points: ['Lanzamientos', 'Contenido visual', 'Tráfico al ecommerce'],
+    },
+    {
+      name: 'Facebook',
+      handle: 'LinSel',
+      title: 'Confianza comercial y comunicación de promociones',
+      stat: 'Venta y envíos a nivel nacional',
+      points: ['Promociones', 'Comunidad', 'Atención comercial'],
+    },
+    {
+      name: 'Website',
+      handle: 'linsel.mx',
+      title: 'Catálogo, navegación y compra centralizada',
+      stat: 'Categorías, productos nuevos, marcas y promociones visibles',
+      points: ['Catálogo ordenado', 'Compra web', 'Escalabilidad comercial'],
+    },
+  ]
 
 export function SocialCommerceSection() {
   return (
@@ -32,7 +32,7 @@ export function SocialCommerceSection() {
         <SectionHeader
           eyebrow="Social commerce"
           title="La tienda también vive desde redes sociales"
-          description="Como esta marca vende mucho desde redes, el ecommerce debe verse conectado con ese ecosistema y no separado de él."
+          description="Como esta marca vende mucho desde redes, queremos que el ecommerce se vea conectado con este sistema y no separado de el"
         />
 
         <div className="grid gap-5 lg:grid-cols-3">

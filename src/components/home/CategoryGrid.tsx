@@ -6,50 +6,44 @@ import { categories } from '@/data/categories'
 
 export function CategoryGrid() {
   return (
-    <section className="section-padding">
+    <section className="section-padding pt-6 md:pt-8">
       <Container>
         <SectionHeader
           eyebrow="Categorías"
           title="Explora por línea de producto"
-          description="Una navegación más clara ayuda a que el catálogo se sienta ordenado, moderno y listo para crecer."
+          description="Una navegación más clara, limpia y lista para compra."
         />
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (
             <Link
               key={category.id}
               href="/catalogo"
-              className="group surface-card overflow-hidden rounded-[28px] transition duration-300 hover:-translate-y-1"
+              className="group surface-card overflow-hidden rounded-[24px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]"
             >
-              <div className="relative aspect-[4/4.8] overflow-hidden bg-[#efe5da]">
+              <div className="relative aspect-[4/4.7] overflow-hidden bg-[#efe5da]">
                 <Image
                   src={category.image}
                   alt={category.name}
                   fill
-                  className="object-cover transition duration-700 group-hover:scale-[1.06]"
+                  className="object-cover transition duration-700 group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(31,26,23,0.00)_30%,rgba(31,26,23,0.30)_100%)]" />
-                <div className="absolute right-4 top-4 rounded-full bg-white/85 px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-[var(--color-text)]">
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(31,26,23,0.00)_45%,rgba(31,26,23,0.22)_100%)]" />
+                <div className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-[var(--color-text)]">
                   Explorar
                 </div>
               </div>
 
-              <div className="p-5">
+              <div className="p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-lg font-medium transition duration-300 group-hover:translate-y-[-2px]">
+                  <h3 className="text-base font-semibold tracking-[-0.02em]">
                     {category.name}
                   </h3>
-                  <span className="text-sm text-[var(--color-muted)] transition duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
+                  <span className="text-sm text-[var(--color-muted)]">→</span>
                 </div>
 
                 <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
                   {category.description}
-                </p>
-
-                <p className="mt-4 text-xs uppercase tracking-[0.18em] text-[var(--color-muted)]">
-                  Ver colección
                 </p>
               </div>
             </Link>

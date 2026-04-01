@@ -8,18 +8,23 @@ type ButtonProps = {
   className?: string
 }
 
-export function Button({ children, href, variant = 'primary', className }: ButtonProps) {
+export function Button({
+  children,
+  href,
+  variant = 'primary',
+  className,
+}: ButtonProps) {
   const styles = {
     primary:
-      'bg-[var(--color-accent-dark)] text-white hover:opacity-95',
+      'bg-[var(--color-accent-dark)] !text-white border border-[var(--color-accent-dark)] hover:bg-[#3a2d26] hover:!text-white',
     secondary:
-      'bg-[var(--color-soft)] text-[var(--color-text)] hover:bg-[var(--color-sand)]',
+      'bg-white text-[var(--color-text)] border border-[var(--color-line)] hover:bg-[var(--color-soft)]',
     ghost:
       'bg-transparent text-[var(--color-text)] border border-[var(--color-line)] hover:bg-white',
   }
 
   const base = cn(
-    'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition duration-200',
+    'inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-3 text-sm font-semibold tracking-[-0.01em] transition duration-200 shadow-[0_6px_18px_rgba(43,33,28,0.05)]',
     styles[variant],
     className,
   )

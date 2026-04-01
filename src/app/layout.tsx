@@ -1,17 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
-import './globals.css'
+import { Manrope, DM_Sans } from 'next/font/google'
+import './global.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-heading',
 })
 
-const playfair = Playfair_Display({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-body',
 })
 
 export const metadata: Metadata = {
@@ -20,9 +20,11 @@ export const metadata: Metadata = {
     'MVP visual-comercial de ecommerce para distribuidora de productos de belleza con visión B2C y B2B.',
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="es" className={`${manrope.variable} ${dmSans.variable}`}>
       <body className="bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
         <Navbar />
         <main>{children}</main>
