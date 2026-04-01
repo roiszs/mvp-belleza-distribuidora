@@ -3,26 +3,26 @@ import type { Category } from '@/types/category'
 export const categories: Category[] = [
   {
     id: 'geles',
-    name: 'Geles y esmaltes',
-    description: 'Color profesional con acabado premium y alta duración.',
+    name: 'Gel semipermanente',
+    description: 'Colecciones Le Mussa, tonos clásicos y gamas de alta rotación para cabina, salón y reventa.',
     image: '/images/categories/geles.jpg',
   },
   {
     id: 'acrilico',
-    name: 'Acrílico y construcción',
-    description: 'Productos pensados para técnica, resistencia y volumen.',
+    name: 'Acrílico y preparación',
+    description: 'Polvo acrílico, bases, limas y esenciales para preparación y servicio profesional.',
     image: '/images/categories/acrilico.jpg',
   },
   {
-    id: 'herramientas',
-    name: 'Herramientas',
-    description: 'Lámparas, brocas, pinceles y accesorios de precisión.',
-    image: '/images/categories/herramientas.jpg',
+    id: 'tips',
+    name: 'Tips y construcción',
+    description: 'Tips Soft Gel, formatos coffin y materiales para armado de sets con mejor presentación.',
+    image: '/images/categories/tips.jpg',
   },
   {
-    id: 'cuidado',
-    name: 'Cuidado y preparación',
-    description: 'Preparadores, aceites y esenciales para una aplicación impecable.',
-    image: '/images/categories/cuidado.jpg',
+    id: 'decoracion',
+    name: 'Decoración y herramientas',
+    description: 'Efectos espejo, flake, cristales, katanas, lámparas y accesorios para mesa de trabajo.',
+    image: '/images/categories/decoracion.jpg',
   },
 ]

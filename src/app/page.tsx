@@ -5,6 +5,9 @@ import { PromoBanner } from '@/components/home/PromoBanner'
 import { BrandSection } from '@/components/home/BrandSection'
 import { TrustBadges } from '@/components/home/TrustBadges'
 import { B2BPreview } from '@/components/home/B2BPreview'
+import { CommunityProof } from '@/components/home/CommunityProof'
+import { SocialCommerceSection } from '@/components/home/SocialCommerceSection'
+import { CommerceModeShowcase } from '@/components/home/CommerceModeShowcase'
 
 export default function HomePage() {
   return (
@@ -12,6 +15,9 @@ export default function HomePage() {
       <Hero />
       <CategoryGrid />
       <NewArrivals />
+      <CommerceModeShowcase />
+      <CommunityProof />
+      <SocialCommerceSection />
       <PromoBanner />
       <BrandSection />
       <TrustBadges />
