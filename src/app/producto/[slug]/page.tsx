@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { products } from '@/data/products'
 import { Container } from '@/components/layout/Container'
@@ -5,27 +6,36 @@ import { ProductGallery } from '@/components/product/ProductGallery'
 import { ProductInfo } from '@/components/product/ProductInfo'
 
 export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }))
+return products.map((product) => ({ slug: product.slug }))
 }
 
 export default async function ProductPage({
-  params,
+params,
 }: {
-  params: Promise<{ slug: string }>
+params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
-  const product = products.find((item) => item.slug === slug)
+const { slug } = await params
+const product = products.find((item) => item.slug === slug)
 
-  if (!product) return notFound()
+if (!product) return notFound()
 
-  return (
-    <section className="section-padding">
-      <Container>
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-          <ProductGallery images={product.images} name={product.name} />
-          <ProductInfo product={product} />
-        </div>
-      </Container>
-    </section>
-  )
+return (
+<section className="section-padding">
+<Container>
+<div className="mb-6">
+<Link
+href="/catalogo"
+className="inline-flex items-center rounded-full border border-[var(--color-line)] bg-white px-4 py-2 text-sm font-medium text-[var(--color-text)] transition hover:bg-[var(--color-soft)]"
+>
+← Volver al catálogo
+</Link>
+</div>
+    <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+      <ProductGallery images={product.images} name={product.name} />
+      <ProductInfo product={product} />
+    </div>
+  </Container>
+</section>
+
+)
 }

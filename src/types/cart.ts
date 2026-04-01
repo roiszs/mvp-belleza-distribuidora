@@ -1,4 +1,4 @@
-import type { Product } from './product'
+import type { Product } from '@/types/product'
 
 export interface CartItem {
   product: Product
