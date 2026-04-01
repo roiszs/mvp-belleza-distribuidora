@@ -18,7 +18,7 @@ return (
 <header className="sticky top-0 z-50 border-b border-[var(--color-line)] bg-[rgba(250,247,242,0.94)] backdrop-blur-md">
 <Container className="flex min-h-[64px] items-center justify-between gap-4">
 <Link href="/" className="font-display text-lg font-semibold tracking-[-0.03em] md:text-xl">
-Belleza Pro
+Linsel
 </Link>
 
     <nav className="hidden items-center gap-6 md:flex">
