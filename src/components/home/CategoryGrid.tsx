@@ -21,7 +21,7 @@ export function CategoryGrid() {
               href="/catalogo"
               className="group surface-card overflow-hidden rounded-[24px] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]"
             >
-              <div className="relative aspect-[4/4.2] overflow-hidden bg-[#efe5da] md:aspect-[4/4.7]">
+              <div className="relative aspect-[4/3.5] overflow-hidden bg-[#efe5da] md:aspect-[4/3.9]">
                 <Image
                   src={category.image}
                   alt={category.name}
