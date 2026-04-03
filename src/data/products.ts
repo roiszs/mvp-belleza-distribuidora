@@ -91,6 +91,12 @@ shortDescription: 'Decoración visual para complementar sets y compras rápidas.
 description:
 'Producto ideal para reforzar variedad dentro del catálogo y darle más profundidad visual.',
 price: 35,
+wholesalePrice: 75,
+volumeTiers: [
+{ minQty: 6, label: 'Caja 6+', price: 75 },
+{ minQty: 12, label: 'Caja 12+', price: 70 },
+{ minQty: 24, label: 'Volumen 24+', price: 60 },
+],
 compareAtPrice: 45,
 badge: 'Oferta',
 isOnSale: true,
@@ -112,6 +118,12 @@ shortDescription: 'Set decorativo pensado para variedad y venta complementaria.'
 description:
 'Aporta surtido visual al ecommerce y ayuda a que la tienda se sienta más completa.',
 price: 70,
+wholesalePrice: 85,
+volumeTiers: [
+{ minQty: 6, label: 'Caja 6+', price: 85 },
+{ minQty: 12, label: 'Caja 12+', price: 80 },
+{ minQty: 24, label: 'Volumen 24+', price: 75 },
+],
 badge: 'Top ventas',
 stock: 16,
 sku: 'EF-06',
@@ -131,6 +143,12 @@ shortDescription: 'Formato ideal para construcción rápida y catálogo más só
 description:
 'Producto útil para reforzar la parte de construcción y compra profesional dentro de la tienda.',
 price: 50,
+wholesalePrice: 85,
+volumeTiers: [
+{ minQty: 6, label: 'Caja 6+', price: 85 },
+{ minQty: 12, label: 'Caja 12+', price: 80 },
+{ minQty: 24, label: 'Volumen 24+', price: 75 },
+],
 badge: 'Nuevo',
 isNew: true,
 stock: 22,
@@ -151,6 +169,12 @@ shortDescription: 'Accesorio para mesa de trabajo con mejor presencia visual.',
 description:
 'Ayuda a que el catálogo no solo tenga consumibles, sino también herramientas con mejor presentación.',
 price: 290,
+wholesalePrice: 85,
+volumeTiers: [
+{ minQty: 6, label: 'Caja 6+', price: 85 },
+{ minQty: 12, label: 'Caja 12+', price: 80 },
+{ minQty: 24, label: 'Volumen 24+', price: 75 },
+],
 badge: 'Top ventas',
 stock: 3,
 sku: 'KLZ-J056-NE',
