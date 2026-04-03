@@ -1,11 +1,14 @@
 import { cn } from '@/lib/utils'
 
-export function Container({
-  className,
-  children,
-}: {
-  className?: string
-  children: React.ReactNode
-}) {
-  return <div className={cn('container-shell', className)}>{children}</div>
+type ContainerProps = {
+children: React.ReactNode
+className?: string
+}
+
+export function Container({ children, className }: ContainerProps) {
+return (
+<div className={cn('container-shell w-full min-w-0', className)}>
+{children}
+</div>
+)
 }

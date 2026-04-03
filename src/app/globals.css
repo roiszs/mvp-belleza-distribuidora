@@ -14,6 +14,12 @@
 --font-body: 'DM Sans', sans-serif;
 }
 
+html,
+body {
+max-width: 100%;
+overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -101,3 +107,19 @@ background:
 radial-gradient(circle at top right, rgba(237, 227, 215, 0.55), transparent 32%),
 linear-gradient(180deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.2) 100%);
 }
+
+
+@layer base {
+  *, ::before, ::after {
+    min-width: 0;
+  }
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  }

@@ -6,6 +6,7 @@ import { SectionHeader } from '@/components/layout/SectionHeader'
 import { featuredProducts } from '@/data/products'
 import { Button } from '@/components/ui/Button'
 import { formatPrice } from '@/lib/utils'
+import type { Product } from '@/types/product'
 
 const modeCopy = {
 b2c: {
@@ -27,6 +28,8 @@ points: ['Precios por volumen', 'Caja 6 / 12 / 24+', 'Atención comercial', 'Rec
 export function CommerceModeShowcase() {
 const [mode, setMode] = useState<'b2c' | 'b2b'>('b2c')
 
+const showcaseProducts: Product[] = featuredProducts.slice(0, 3)
+
 return (
 <section className="section-padding">
 <Container>
@@ -36,7 +39,7 @@ title="Compra como cliente o compra como negocio"
 description="Una forma clara de mostrar cómo la tienda puede adaptarse a menudeo o mayoreo sin complicar la experiencia."
 />
 
-      <div className="section-soft overflow-hidden rounded-[24px] p-4 md:p-6">
+    <div className="overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-white p-4 md:p-6">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="rounded-full bg-[var(--color-soft)] p-1">
           <button
@@ -62,7 +65,7 @@ description="Una forma clara de mostrar cómo la tienda puede adaptarse a menude
           </button>
         </div>
 
-        <p className="text-sm text-[var(--color-muted)]">Tienes dos opciones</p>
+        <p className="text-sm text-[var(--color-muted)]">Vista comercial simple y clara</p>
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] md:mt-6 md:gap-6">
@@ -97,15 +100,15 @@ description="Una forma clara de mostrar cómo la tienda puede adaptarse a menude
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {featuredProducts.slice(0, 3).map((product) => {
+        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto hide-scrollbar pb-2 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+          {showcaseProducts.map((product: Product) => {
             const activePrice =
               mode === 'b2b' ? product.wholesalePrice ?? product.price : product.price
 
             return (
               <article
                 key={product.id}
-                className="flex h-full rounded-[22px] border border-[var(--color-line)] bg-[var(--color-bg)] p-3 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.04)]"
+                className="flex h-full min-w-[250px] snap-start rounded-[22px] border border-[var(--color-line)] bg-[var(--color-bg)] p-3 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.04)] md:min-w-0"
               >
                 <div className="flex w-full flex-col rounded-[18px] bg-white p-4">
                   <div>

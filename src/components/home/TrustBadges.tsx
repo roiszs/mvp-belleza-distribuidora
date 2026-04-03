@@ -33,11 +33,11 @@ Señales claras de compra y crecimiento
 </h3>
 </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+<div className="mt-5 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto hide-scrollbar px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 xl:grid-cols-4">
         {items.map((item) => (
           <div
             key={item.title}
-            className="rounded-[24px] border border-[var(--color-line)] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]"
+            className="w-[260px] shrink-0 snap-start rounded-[24px] border border-[var(--color-line)] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)] md:w-auto"
           >
             <h3 className="text-base font-semibold tracking-[-0.02em]">{item.title}</h3>
             <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">{item.text}</p>
