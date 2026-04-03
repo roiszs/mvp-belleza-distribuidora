@@ -5,9 +5,9 @@ export function Hero() {
 return (
 <section className="relative overflow-hidden section-padding pb-10 md:pb-12">
 <div className="pointer-events-none absolute inset-0">
-<div className="absolute -left-16 top-10 h-52 w-52 rounded-full bg-[#ead8c8]/40 blur-3xl" />
-<div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#f2e7dc]/45 blur-3xl" />
-<div className="absolute left-1/2 top-1/3 h-40 w-40 rounded-full bg-[#efe4d8]/25 blur-3xl" />
+<div className="absolute -left-16 top-10 h-52 w-52 rounded-full bg-[#ead8c8]/40 blur-2xl" />
+<div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-[#f2e7dc]/45 blur-2xl" />
+<div className="absolute left-1/2 top-1/3 h-40 w-40 rounded-full bg-[#efe4d8]/25 blur-2xl" />
 </div>
 
   <Container className="relative">

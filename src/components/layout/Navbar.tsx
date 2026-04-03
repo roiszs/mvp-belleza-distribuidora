@@ -15,7 +15,7 @@ export function Navbar() {
 const [open, setOpen] = useState(false)
 
 return (
-<header className="sticky top-0 z-50 border-b border-[rgba(232,222,210,0.75)] bg-[rgba(250,247,242,0.78)] backdrop-blur-xl">
+<header className="sticky top-0 z-50 border-b border-[rgba(232,222,210,0.75)] bg-[rgba(250,247,242,0.78)]">
 <Container className="flex min-h-[72px] items-center justify-between gap-4">
 <Link
 href="/"
@@ -57,7 +57,7 @@ Linsel
   </Container>
 
   {open ? (
-    <div className="border-t border-[var(--color-line)] bg-[rgba(250,247,242,0.97)] backdrop-blur-xl md:hidden">
+    <div className="border-t border-[var(--color-line)] bg-[rgba(250,247,242,0.97)] md:hidden">
       <Container className="py-4">
         <nav className="flex flex-col gap-2">
           {links.map((link) => (
