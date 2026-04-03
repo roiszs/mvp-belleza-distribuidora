@@ -1,160 +1,317 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Container } from '@/components/layout/Container'
 import { SectionHeader } from '@/components/layout/SectionHeader'
-import { featuredProducts } from '@/data/products'
 import { Button } from '@/components/ui/Button'
+import {
+ArrowUpRight,
+BadgeCheck,
+ShoppingBag,
+Building2,
+Sparkles,
+Package,
+} from 'lucide-react'
+import { products } from '@/data/products'
 import { formatPrice } from '@/lib/utils'
-import type { Product } from '@/types/product'
 
-const modeCopy = {
-b2c: {
-eyebrow: 'Menudeo',
-title: 'Compra individual y productos de alta rotación',
-description:
-'Una vista clara para clientas que compran por pieza, por tono o por producto específico.',
-points: ['Compra unitaria', 'Promociones visibles', 'Productos nuevos', 'Navegación simple'],
-},
-b2b: {
-eyebrow: 'Mayoreo',
-title: 'Compra para negocio, salón o reposición',
-description:
-'Una vista pensada para clientes que necesitan precio por volumen, compra por caja y recompra frecuente.',
-points: ['Precios por volumen', 'Caja 6 / 12 / 24+', 'Atención comercial', 'Recompra frecuente'],
-},
-} as const
+type Mode = 'b2c' | 'b2b'
+
+function ModePill({
+active,
+onClick,
+icon,
+label,
+}: {
+active: boolean
+onClick: () => void
+icon: React.ReactNode
+label: string
+}) {
+return (
+<button
+type="button"
+onClick={onClick}
+className={[
+'relative inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-4 text-[12px] font-semibold tracking-[-0.01em] transition',
+active
+? 'text-white'
+: 'text-[var(--color-text)] hover:bg-white/60',
+].join(' ')}
+>
+<span
+className={[
+'pointer-events-none absolute inset-0 rounded-full transition',
+active
+? 'bg-[var(--color-accent-dark)] shadow-[0_12px_28px_rgba(43,33,28,0.16)]'
+: 'bg-transparent',
+].join(' ')}
+/>
+<span className="relative inline-flex items-center gap-2">
+<span className="opacity-90">{icon}</span>
+{label}
+</span>
+</button>
+)
+}
+
+function ProductMiniCard({
+brand,
+name,
+price,
+subtitle,
+badge,
+}: {
+brand: string
+name: string
+price: number
+subtitle: string
+badge: string
+}) {
+return (
+<article className="group relative overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-[linear-gradient(180deg,#ffffff_0%,#fbf6ef_100%)] p-4 shadow-[0_10px_24px_rgba(43,33,28,0.03)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(43,33,28,0.06)] hover:border-[var(--color-accent)]/35 active:scale-[0.99] active:shadow-[0_14px_28px_rgba(43,33,28,0.07)]">
+<div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(182,138,120,0.14),transparent)] opacity-70" />
+
+
+  <div className="relative flex items-start justify-between gap-3">
+    <div>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+        {brand}
+      </p>
+      <h4 className="mt-2 text-sm font-semibold tracking-[-0.01em] text-[var(--color-text)]">
+        {name}
+      </h4>
+    </div>
+
+    <span className="inline-flex items-center gap-1 rounded-full border border-[var(--color-line)] bg-white/70 px-2 py-1 text-[11px] font-medium text-[var(--color-muted)]">
+      <BadgeCheck className="h-3.5 w-3.5 text-[var(--color-accent)]" />
+      {badge}
+    </span>
+  </div>
+
+  <div className="relative mt-4 rounded-[18px] border border-[var(--color-line)] bg-white/70 p-3">
+    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+      {subtitle}
+    </p>
+    <p className="mt-2 text-lg font-semibold tracking-[-0.02em] text-[var(--color-text)]">
+      {formatPrice(price)}
+    </p>
+  </div>
+
+  <div className="pointer-events-none relative mt-4 h-[1px] w-0 bg-[var(--color-accent)] opacity-0 transition-all duration-300 group-hover:w-20 group-hover:opacity-100" />
+</article>
+
+)
+}
 
 export function CommerceModeShowcase() {
-const [mode, setMode] = useState<'b2c' | 'b2b'>('b2c')
+const [mode, setMode] = useState<Mode>('b2c')
 
-const showcaseProducts: Product[] = featuredProducts.slice(0, 3)
+const featured = useMemo(() => {
+// Tomamos 3 productos mock para demo (si tienes flags, puedes filtrar por nuevo/oferta)
+return products.slice(0, 3)
+}, [])
 
 return (
-<section className="section-padding">
+<section className="section-padding pt-0">
 <Container>
 <SectionHeader
-eyebrow="Modo visual"
-title="Compra como cliente o compra como negocio"
-description="Una forma clara de mostrar cómo la tienda puede adaptarse a menudeo o mayoreo sin complicar la experiencia."
+eyebrow="Menudeo + Mayoreo"
+title="Una lectura comercial simple y clara"
+description="El mismo catálogo puede servir para compra individual y para negocio, sin construir todavía login ni reglas completas."
 />
 
-    <div className="overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-white p-4 md:p-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="rounded-full bg-[var(--color-soft)] p-1">
-          <button
-            onClick={() => setMode('b2c')}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-              mode === 'b2c'
-                ? 'bg-[var(--color-accent-dark)] text-white'
-                : 'text-[var(--color-text)]'
-            }`}
-          >
-            Menudeo
-          </button>
-
-          <button
-            onClick={() => setMode('b2b')}
-            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-              mode === 'b2b'
-                ? 'bg-[var(--color-accent-dark)] text-white'
-                : 'text-[var(--color-text)]'
-            }`}
-          >
-            Mayoreo
-          </button>
+    <div className="relative mt-6 rounded-[28px] border border-[var(--color-line)] bg-white/70 p-4 shadow-[0_18px_40px_rgba(43,33,28,0.03)] backdrop-blur-sm md:p-6">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+          <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
+          Commerce mode
         </div>
 
-        <p className="text-sm text-[var(--color-muted)]">Vista comercial simple y clara</p>
+        <a
+          href="/catalogo"
+          className="hidden items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/70 px-3 py-1.5 text-[12px] font-semibold tracking-[-0.01em] text-[var(--color-text)] transition hover:bg-white hover:shadow-[0_10px_20px_rgba(43,33,28,0.05)] md:inline-flex"
+        >
+          Ver catálogo
+          <ArrowUpRight className="h-4 w-4 text-[var(--color-muted)]" />
+        </a>
+
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)] md:hidden">
+          Toca para cambiar
+        </p>
       </div>
 
-      <div className="mt-5 grid gap-5 lg:grid-cols-[0.95fr_1.05fr] md:mt-6 md:gap-6">
-        <div className="flex flex-col">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
-            {modeCopy[mode].eyebrow}
-          </p>
+      <div className="mb-4 h-px w-20 bg-[linear-gradient(90deg,var(--color-accent-dark),transparent)]" />
 
-          <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] md:text-3xl">
-            {modeCopy[mode].title}
-          </h3>
+      <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        {/* Left: copy + toggle + benefits */}
+        <div className="relative overflow-hidden rounded-[26px] border border-[var(--color-line)] bg-[linear-gradient(180deg,#ffffff_0%,#fbf6ef_100%)] p-5 shadow-[0_10px_24px_rgba(43,33,28,0.03)]">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(182,138,120,0.14),transparent)] opacity-80" />
 
-          <p className="mt-3 text-sm leading-7 text-[var(--color-muted)] md:text-base">
-            {modeCopy[mode].description}
-          </p>
+          <div className="relative">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+              {mode === 'b2c' ? 'Menudeo' : 'Mayoreo'}
+            </p>
 
-          <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {modeCopy[mode].points.map((point) => (
-              <div
-                key={point}
-                className="rounded-[18px] bg-[#faf5ef] px-4 py-4 text-sm font-medium text-[var(--color-text)]"
-              >
-                {point}
-              </div>
+            <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[var(--color-text)] md:text-3xl">
+              {mode === 'b2c'
+                ? 'Compra individual y productos de alta rotación'
+                : 'Compra por caja, volumen y condiciones de negocio'}
+            </h3>
+
+            <p className="mt-3 max-w-xl text-[14px] leading-7 text-[var(--color-muted)] md:text-[15px]">
+              {mode === 'b2c'
+                ? 'Una vista clara para clientas que compran por pieza, por tono o por producto específico.'
+                : 'Pensado para salones y distribuidores: escalas, cotización rápida y recompra más ágil.'}
+            </p>
+
+            {/* Toggle */}
+            <div className="mt-5 inline-flex rounded-full border border-[var(--color-line)] bg-white/70 p-1">
+              <ModePill
+                active={mode === 'b2c'}
+                onClick={() => setMode('b2c')}
+                icon={<ShoppingBag className="h-4 w-4" />}
+                label="Menudeo"
+              />
+              <ModePill
+                active={mode === 'b2b'}
+                onClick={() => setMode('b2b')}
+                icon={<Building2 className="h-4 w-4" />}
+                label="Mayoreo"
+              />
+            </div>
+
+            {/* Benefits */}
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {mode === 'b2c' ? (
+                <>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Compra unitaria
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Selección rápida y claridad de precio por pieza.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Productos nuevos
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Novedades visibles sin romper el minimalismo.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Promociones
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Ofertas claras para compra inmediata.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Navegación simple
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Categorías, filtros y lectura cómoda.
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Escalas 6+ / 12+ / 24+
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Lectura por caja y volumen sin complicar.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Cotización rápida
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Flujo futuro para solicitudes comerciales.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Recompra
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Pensado para reposición y pedidos frecuentes.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[var(--color-line)] bg-white/70 p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                      Operación escalable
+                    </p>
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      Listo para crecer a inventario y marketplace.
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button href="/catalogo">Explorar catálogo</Button>
+              <Button href="/b2b" variant="secondary">
+                Ver visión B2B
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: mini cards demo */}
+        <div className="relative">
+          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
+            {featured.map((p) => (
+              <ProductMiniCard
+                key={p.id}
+                brand={p.brand}
+                name={p.name}
+                price={mode === 'b2c' ? p.price : p.wholesalePrice ?? p.price}
+                subtitle={mode === 'b2c' ? 'Precio menudeo' : 'Precio mayoreo'}
+                badge={mode === 'b2c' ? 'Individual' : 'Mayoreo'}
+              />
             ))}
           </div>
 
-          <div className="mt-5">
-            <Button href="/catalogo">
-              {mode === 'b2c' ? 'Explorar catálogo' : 'Ver catálogo comercial'}
-            </Button>
+          <div className="mt-4 rounded-[26px] border border-[var(--color-line)] bg-white/70 p-5">
+            <div className="flex items-center gap-3">
+              <div className="rounded-[18px] border border-[var(--color-line)] bg-white/80 p-3 shadow-[0_10px_20px_rgba(43,33,28,0.04)]">
+                <Sparkles className="h-5 w-5 text-[var(--color-accent-dark)]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                  Señal visual
+                </p>
+                <p className="mt-1 text-sm font-semibold tracking-[-0.01em] text-[var(--color-text)]">
+                  Vista comercial lista para crecer
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-3 text-[14px] leading-7 text-[var(--color-muted)] md:text-[15px]">
+              Este bloque muestra dirección B2C/B2B sin login real. En la fase final, aquí vivirán reglas por
+              cantidad, cotización y compras recurrentes.
+            </p>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {['Menudeo', 'Mayoreo', 'Volumen', 'Cotización'].map((x) => (
+                <span
+                  key={x}
+                  className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--color-text)]"
+                >
+                  <Package className="h-4 w-4 text-[var(--color-muted)]" />
+                  {x}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto hide-scrollbar pb-2 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
-          {showcaseProducts.map((product: Product) => {
-            const activePrice =
-              mode === 'b2b' ? product.wholesalePrice ?? product.price : product.price
-
-            return (
-              <article
-                key={product.id}
-                className="flex h-full min-w-[250px] snap-start rounded-[22px] border border-[var(--color-line)] bg-[var(--color-bg)] p-3 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.04)] md:min-w-0"
-              >
-                <div className="flex w-full flex-col rounded-[18px] bg-white p-4">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">
-                      {product.brand}
-                    </p>
-
-                    <h4 className="mt-2 min-h-[84px] text-sm font-semibold leading-7 tracking-[-0.01em]">
-                      {product.name}
-                    </h4>
-
-                    <div className="mt-4">
-                      <p className="text-sm text-[var(--color-muted)]">
-                        {mode === 'b2c' ? 'Precio menudeo' : 'Precio mayoreo'}
-                      </p>
-
-                      <p className="mt-1 text-xl font-semibold tracking-[-0.03em]">
-                        {formatPrice(activePrice)}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-auto pt-5">
-                    {mode === 'b2b' && product.volumeTiers?.length ? (
-                      <div className="flex min-h-[60px] flex-wrap content-start gap-2">
-                        {product.volumeTiers.slice(0, 3).map((tier) => (
-                          <span
-                            key={tier.label}
-                            className="rounded-full bg-[var(--color-soft)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]"
-                          >
-                            {tier.minQty}+ pzs
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="min-h-[60px]">
-                        <div className="inline-flex rounded-full bg-[var(--color-soft)] px-3 py-2 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-text)]">
-                          Compra individual
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </article>
-            )
-          })}
         </div>
       </div>
     </div>
