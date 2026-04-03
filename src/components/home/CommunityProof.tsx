@@ -1,5 +1,6 @@
 import { Container } from '@/components/layout/Container'
 import { SectionHeader } from '@/components/layout/SectionHeader'
+import { Star, BadgeCheck } from 'lucide-react'
 
 const testimonials = [
 {
@@ -29,24 +30,33 @@ rating: 5,
 ]
 
 function Stars({ value = 5 }: { value?: number }) {
-const stars = Array.from({ length: 5 }, (_, i) => i < value)
-return (
-<div className="flex items-center gap-1">
-{stars.map((on, idx) => (
-<span
-key={idx}
-className={on ? 'text-[var(--color-accent)]' : 'text-[var(--color-line)]'}
-aria-hidden="true"
->
-★
-</span>
-))}
-<span className="ml-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
-Verified
-</span>
-</div>
-)
-}
+  const stars = Array.from({ length: 5 }, (_, i) => i < value)
+  
+  return (
+  <div className="flex items-center gap-2">
+  <div className="flex items-center gap-1">
+  {stars.map((on, idx) => (
+  <Star
+  key={idx}
+  className={
+  on
+  ? 'h-4 w-4 text-[var(--color-accent)]'
+  : 'h-4 w-4 text-[var(--color-line)]'
+  }
+  fill={on ? 'currentColor' : 'none'}
+  />
+  ))}
+  </div>
+  
+    <span className="inline-flex items-center gap-1 rounded-full border border-[var(--color-line)] bg-white/70 px-2 py-1 text-[11px] font-medium text-[var(--color-muted)]">
+      <BadgeCheck className="h-3.5 w-3.5 text-[var(--color-accent)]" />
+      Compra verificada
+    </span>
+  </div>
+  
+  )
+  }
+
 
 export function CommunityProof() {
 return (
@@ -63,18 +73,26 @@ description="Una sección visual pensada para transmitir confianza, comunidad y 
     <div className="relative mt-6 rounded-[28px] border border-[var(--color-line)] bg-white/70 p-4 shadow-[0_18px_40px_rgba(43,33,28,0.03)] backdrop-blur-sm md:p-6">
       {/* hint superior */}
       <div className="mb-4 flex items-center justify-between gap-3">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-          <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-          Opinión destacada
-        </div>
+      <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/80 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+      <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
+      Opinión destacada
+      </div>
 
-        <p className="hidden text-sm text-[var(--color-muted)] md:block">
-          Opiniones reales de clientes y salones
-        </p>
+      {/* CTA pro (solo desktop) */}
+      <a
+      href="/catalogo"
+      className="hidden items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/70 px-3 py-1.5 text-[12px] font-semibold tracking-[-0.01em] text-[var(--color-text)] transition hover:bg-white hover:shadow-[0_10px_20px_rgba(43,33,28,0.05)] md:inline-flex"
 
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)] md:hidden">
-          Desliza 
-        </p>
+      > 
+      Ver catálogo
+      <span className="text-[var(--color-muted)]">→</span>
+
+      </a>
+
+      {/* hint mobile */}
+      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)] md:hidden">
+      Desliza
+      </p>
       </div>
 
       {/* Carrusel móvil / Grid desktop */}
@@ -82,7 +100,7 @@ description="Una sección visual pensada para transmitir confianza, comunidad y 
         {testimonials.map((item) => (
           <article
             key={item.name}
-            className="w-[min(86vw,320px)] shrink-0 snap-center rounded-[26px] border border-[var(--color-line)] bg-[linear-gradient(180deg,#ffffff_0%,#fbf6ef_100%)] p-4 shadow-[0_10px_24px_rgba(43,33,28,0.035)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(43,33,28,0.06)] md:w-auto md:snap-start"
+            className="w-[min(86vw,320px)] shrink-0 snap-center rounded-[26px] border border-[var(--color-line)] bg-[linear-gradient(180deg,#ffffff_0%,#fbf6ef_100%)] p-4 shadow-[0_10px_24px_rgba(43,33,28,0.035)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(43,33,28,0.06)] md:w-auto md:snap-start hover:border-[var(--color-accent)]/35 active:scale-[0.99] active:shadow-[0_14px_28px_rgba(43,33,28,0.07)]"
            >
             {/* Header */}
             <div className="flex items-start justify-between gap-3">
@@ -94,15 +112,15 @@ description="Una sección visual pensada para transmitir confianza, comunidad y 
               </div>
 
               <div className="text-sm">
-                <Stars value={item.rating} />
+              <Stars value={item.rating} />
               </div>
             </div>
 
             {/* Quote */}
-            <p className="mt-4 text-[14px] leading-7 text-[var(--color-text)] md:text-[15.5px]">
-              <span className="text-[var(--color-accent-dark)]">“</span>
-              {item.quote}
-              <span className="text-[var(--color-accent-dark)]">”</span>
+            <p className="mt-4 min-h-[120px] text-[14px] leading-7 text-[var(--color-text)] md:min-h-[110px] md:text-[15.5px]">
+            <span className="text-[var(--color-accent-dark)]">“</span>
+            {item.quote}
+            <span className="text-[var(--color-accent-dark)]">”</span>
             </p>
 
             {/* Divider */}
