@@ -123,3 +123,9 @@ linear-gradient(180deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0.2) 100%);
   .hide-scrollbar::-webkit-scrollbar {
   display: none;
   }
+
+  /* Fade elegante en carruseles (se ve premium en móvil) */
+.carousel-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+  }
