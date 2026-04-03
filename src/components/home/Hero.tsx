@@ -13,6 +13,7 @@ return (
 <div className="absolute left-1/2 top-1/3 h-44 w-44 -translate-x-1/2 rounded-full bg-[#f7efe6]/60 blur-3xl" />
 </div>
 
+
   <Container className="relative">
     <div className="grid items-start gap-8 lg:grid-cols-[1.05fr_0.95fr]">
       {/* Lado izquierdo */}
@@ -65,125 +66,254 @@ return (
       {/* Lado derecho */}
       <div className="relative">
         <div className="surface-card overflow-hidden rounded-[28px] p-4">
-          {/* Fila superior: MOBILE 1 columna (más cuadrado) / DESKTOP 2 columnas */}
-          <div className="grid gap-4 md:grid-cols-2">
-            {/* Card 1 - Nuevo Drop */}
-            <div className="relative min-h-[260px] rounded-[22px] bg-[linear-gradient(180deg,#f3ebe1_0%,#e6d7ca_100%)] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.06)]">
-              <IconBadge className="border-white/50 bg-white/70">
-                <Sparkles className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
-              </IconBadge>
+          {/* ===========================
+             MOBILE: carrusel
+             DESKTOP: grid
+             =========================== */}
+          <div className="md:hidden">
+            <div className="-mx-4 px-4">
+              <div
+                className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                style={{ WebkitOverflowScrolling: 'touch' }}
+              >
+                {/* Card 1 - Nuevo Drop */}
+                <div className="w-full shrink-0 snap-center">
+                  <div className="relative min-h-[260px] rounded-[22px] bg-[linear-gradient(180deg,#f3ebe1_0%,#e6d7ca_100%)] p-5 shadow-[0_10px_22px_rgba(43,33,28,0.06)]">
+                    <IconBadge className="border-white/50 bg-white/70">
+                      <Sparkles className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                    </IconBadge>
 
-              <div className="pr-12">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-                  Nuevo drop
-                </p>
-                <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em]">Gel tones</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
-                  Colores neutros y productos de alta rotación con una presentación más limpia.
-                </p>
+                    <div className="pr-12">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                        Nuevo drop
+                      </p>
+                      <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em]">Gel tones</h3>
+                      <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                        Colores neutros y productos de alta rotación con una presentación más limpia.
+                      </p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
-                    Clean shades
-                  </span>
-                  <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
-                    New arrival
-                  </span>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                          Clean shades
+                        </span>
+                        <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                          New arrival
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2 - B2B Ready */}
+                <div className="w-full shrink-0 snap-center">
+                  <div className="relative min-h-[260px] rounded-[22px] bg-white p-5 shadow-[0_10px_22px_rgba(43,33,28,0.05)]">
+                    <IconBadge>
+                      <Layers className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                    </IconBadge>
+
+                    <div className="pr-12">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                        B2B ready
+                      </p>
+
+                      <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em]">
+                        Menudeo, mayoreo y volumen
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                        Compra por pieza, por caja o por volumen con una lectura comercial mucho más clara.
+                      </p>
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                          Caja 6+
+                        </span>
+                        <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                          Caja 12+
+                        </span>
+                        <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                          Volumen 24+
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3 - Social Commerce */}
+                <div className="w-full shrink-0 snap-center">
+                  <div className="relative min-h-[240px] rounded-[22px] border border-[var(--color-line)] bg-[#faf5ef] p-5 shadow-[0_10px_22px_rgba(43,33,28,0.04)]">
+                    <IconBadge className="bg-white/70">
+                      <ShoppingBag className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                    </IconBadge>
+
+                    <div className="pr-12">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                        Social commerce
+                      </p>
+                      <h3 className="mt-3 text-lg font-semibold tracking-[-0.02em]">
+                        De redes sociales al carrito
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                        El ecommerce acompaña Instagram, Facebook y TikTok para convertir mejor.
+                      </p>
+
+                      <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+                        Ver canales
+                        <ArrowUpRight className="h-4 w-4 text-[var(--color-muted)]" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 4 - Promesa visual */}
+                <div className="w-full shrink-0 snap-center">
+                  <div className="relative min-h-[240px] rounded-[22px] border border-[var(--color-line)] bg-white p-5 shadow-[0_10px_22px_rgba(43,33,28,0.04)]">
+                    <IconBadge>
+                      <ShieldCheck className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                    </IconBadge>
+
+                    <div className="pr-12">
+                      <p className="text-sm font-semibold tracking-[-0.02em]">Promesa visual</p>
+                      <p className="mt-2 max-w-[28ch] text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                        Minimalista, más premium y más claro para comprar.
+                      </p>
+
+                      <div className="mt-4 h-px w-16 bg-[linear-gradient(90deg,var(--color-accent-dark),transparent)]" />
+
+                      <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                        Compra confiable
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Card 2 - B2B Ready */}
-            <div className="relative min-h-[260px] rounded-[22px] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]">
-              <IconBadge>
-                <Layers className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
-              </IconBadge>
+              <div className="mt-3 flex items-center justify-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)] backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+              Desliza
+              <span className="text-[12px] leading-none">→</span>
+              </span>
 
-              <div className="pr-12">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-                  B2B ready
-                </p>
-
-                <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em]">
-                  Menudeo, mayoreo y volumen
-                </h3>
-
-                <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
-                  Compra por pieza, por caja o por volumen con una lectura comercial mucho más clara.
-                </p>
-
-                {/* Chips: wrap para no alargar */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
-                    Caja 6+
-                  </span>
-                  <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
-                    Caja 12+
-                  </span>
-                  <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
-                    Volumen 24+
-                  </span>
-                </div>
+              <span className="h-[2px] w-16 rounded-full bg-[var(--color-line)]/70">
+              <span className="block h-[2px] w-6 rounded-full bg-[var(--color-accent)]" />
+              </span>
               </div>
             </div>
           </div>
 
-          {/* Fila inferior: MOBILE 1 columna / DESKTOP 2 columnas asimétricas */}
-          <div className="mt-4 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-            {/* Card 3 - Social Commerce */}
-            <div className="relative min-h-[240px] rounded-[22px] border border-[var(--color-line)] bg-[#faf5ef] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(43,33,28,0.04)]">
-              <IconBadge className="bg-white/70">
-                <ShoppingBag className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
-              </IconBadge>
+          {/* DESKTOP */}
+          <div className="hidden md:block">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="relative min-h-[260px] rounded-[22px] bg-[linear-gradient(180deg,#f3ebe1_0%,#e6d7ca_100%)] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.06)]">
+                <IconBadge className="border-white/50 bg-white/70">
+                  <Sparkles className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                </IconBadge>
 
-              <div className="pr-12">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-                  Social commerce
-                </p>
-                <h3 className="mt-3 text-lg font-semibold tracking-[-0.02em]">
-                  De redes sociales al carrito
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
-                  El ecommerce acompaña Instagram, Facebook y TikTok para convertir mejor.
-                </p>
+                <div className="pr-12">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                    Nuevo drop
+                  </p>
+                  <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em]">Gel tones</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                    Colores neutros y productos de alta rotación con una presentación más limpia.
+                  </p>
 
-                <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
-                  Ver canales
-                  <ArrowUpRight className="h-4 w-4 text-[var(--color-muted)]" />
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                      Clean shades
+                    </span>
+                    <span className="rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                      New arrival
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative min-h-[260px] rounded-[22px] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(43,33,28,0.05)]">
+                <IconBadge>
+                  <Layers className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                </IconBadge>
+
+                <div className="pr-12">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                    B2B ready
+                  </p>
+
+                  <h3 className="mt-3 text-xl font-semibold tracking-[-0.03em]">
+                    Menudeo, mayoreo y volumen
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                    Compra por pieza, por caja o por volumen con una lectura comercial mucho más clara.
+                  </p>
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                      Caja 6+
+                    </span>
+                    <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                      Caja 12+
+                    </span>
+                    <span className="rounded-full border border-[var(--color-line)] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em]">
+                      Volumen 24+
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Card 4 - Promesa visual */}
-            <div className="relative min-h-[240px] rounded-[22px] border border-[var(--color-line)] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(43,33,28,0.04)]">
-              <IconBadge>
-                <ShieldCheck className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
-              </IconBadge>
+            <div className="mt-4 grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
+              <div className="relative min-h-[240px] rounded-[22px] border border-[var(--color-line)] bg-[#faf5ef] p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(43,33,28,0.04)]">
+                <IconBadge className="bg-white/70">
+                  <ShoppingBag className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                </IconBadge>
 
-              <div className="pr-12">
-                <p className="text-sm font-semibold tracking-[-0.02em]">Promesa visual</p>
-                <p className="mt-2 max-w-[28ch] text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
-                  Minimalista, más premium y más claro para comprar.
-                </p>
+                <div className="pr-12">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
+                    Social commerce
+                  </p>
+                  <h3 className="mt-3 text-lg font-semibold tracking-[-0.02em]">
+                    De redes sociales al carrito
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                    El ecommerce acompaña Instagram, Facebook y TikTok para convertir mejor.
+                  </p>
 
-                <div className="mt-4 h-px w-16 bg-[linear-gradient(90deg,var(--color-accent-dark),transparent)]" />
+                  <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
+                    Ver canales
+                    <ArrowUpRight className="h-4 w-4 text-[var(--color-muted)]" />
+                  </div>
+                </div>
+              </div>
 
-                <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
-                  Compra confiable
-                </p>
+              <div className="relative min-h-[240px] rounded-[22px] border border-[var(--color-line)] bg-white p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(43,33,28,0.04)]">
+                <IconBadge>
+                  <ShieldCheck className="h-[18px] w-[18px] text-[var(--color-accent-dark)]" />
+                </IconBadge>
+
+                <div className="pr-12">
+                  <p className="text-sm font-semibold tracking-[-0.02em]">Promesa visual</p>
+                  <p className="mt-2 max-w-[28ch] text-sm leading-6 text-[var(--color-muted)] [display:-webkit-box] [-webkit-line-clamp:3] [-webkit-box-orient:vertical] overflow-hidden">
+                    Minimalista, más premium y más claro para comprar.
+                  </p>
+
+                  <div className="mt-4 h-px w-16 bg-[linear-gradient(90deg,var(--color-accent-dark),transparent)]" />
+
+                  <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                    Compra confiable
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+          {/* /DESKTOP */}
         </div>
-
-        {/* Hint mobile */}
-        <p className="mt-3 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)] md:hidden">
-          Desliza en otras secciones para ver más
-        </p>
       </div>
     </div>
   </Container>
 </section>
+
 
 )
 }
