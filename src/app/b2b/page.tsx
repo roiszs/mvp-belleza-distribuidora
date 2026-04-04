@@ -1,93 +1,327 @@
-import { Container } from '@/components/layout/Container'
-import { Button } from '@/components/ui/Button'
+import Link from "next/link";
+import {
+ArrowRight,
+BadgeCheck,
+BarChart3,
+Building2,
+Clock,
+CreditCard,
+FileText,
+Layers,
+Package,
+Repeat2,
+ShieldCheck,
+Sparkles,
+Truck,
+} from "lucide-react";
+import { SectionShell } from "@/components/ui/SectionShell";
 
-const features = [
-{
-title: 'Precios por volumen',
-text: 'Estructura lista para mostrar menudeo, mayoreo y escalas especiales por cantidad.',
-},
-{
-title: 'Cotizaciones',
-text: 'Posibilidad futura de solicitudes rápidas para negocios, salones o distribuidores.',
-},
-{
-title: 'Compras recurrentes',
-text: 'Flujo pensado para clientes que compran de forma frecuente y necesitan agilidad.',
-},
-{
-title: 'Atención comercial',
-text: 'Una experiencia orientada a cuentas de negocio, surtido y pedidos más robustos.',
-},
-]
-
-export default function B2BPage() {
+function Pill({ children }: { children: React.ReactNode }) {
 return (
-<section className="relative overflow-hidden section-padding pb-10 pt-10 md:pb-14 md:pt-12">
-<div className="pointer-events-none absolute inset-0">
-<div className="absolute -left-16 top-6 h-56 w-56 rounded-full bg-[#ead8c8]/28 blur-3xl" />
-<div className="absolute right-0 top-0 h-68 w-68 rounded-full bg-[#f2e7dc]/30 blur-3xl" />
-<div className="absolute left-1/2 top-1/3 h-44 w-44 rounded-full bg-[#efe4d8]/18 blur-3xl" />
+<span className="inline-flex items-center rounded-full border border-black/10 bg-white/55 px-3 py-1 text-[11px] font-medium tracking-[0.18em] text-black/60">
+{children}
+</span>
+);
+}
+
+function CTAButton({
+  href,
+  variant = "primary",
+  children,
+  }: {
+  href: string;
+  variant?: "primary" | "secondary";
+  children: React.ReactNode;
+  }) {
+  const base =
+  "inline-flex h-11 items-center justify-center gap-2 rounded-full px-5 text-[13px] font-medium transition duration-300";
+  
+  const primary =
+  [
+  "border border-black/10",
+  "bg-white/55 backdrop-blur-sm text-black/80",
+  "shadow-[0_1px_0_rgba(255,255,255,0.65)]",
+  "hover:bg-white/75 hover:border-black/15",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20",
+  ].join(" ");
+  
+  const secondary =
+  [
+  "border border-black/10",
+  "bg-[rgba(186,160,120,0.16)] text-black/80", // arena suave
+  "hover:bg-[rgba(186,160,120,0.24)] hover:border-black/15",
+  "shadow-[0_1px_0_rgba(255,255,255,0.55)]",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20",
+  ].join(" ");
+  
+  const cls = variant === "primary" ? primary : secondary;
+  
+  return (
+  <Link href={href} className={[base, cls].join(" ")}>
+  {children}
+  </Link>
+  );
+  }
+
+function FeatureCard({
+icon: Icon,
+eyebrow,
+title,
+description,
+bullets,
+}: {
+icon: any;
+eyebrow: string;
+title: string;
+description: string;
+bullets: string[];
+}) {
+return (
+<article className="group relative overflow-hidden rounded-[22px] border border-black/10 bg-white/35 p-5 backdrop-blur-sm shadow-[0_1px_0_rgba(255,255,255,0.65)] transition duration-300 hover:bg-white/55 hover:border-black/15">
+{/* glow */}
+<div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 [background-image:radial-gradient(120%_120%_at_20%_10%,rgba(0,0,0,0.07)_0%,transparent_55%)]" />
+
+  <div className="relative flex items-start justify-between gap-4">
+    <div className="min-w-0">
+      <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">{eyebrow}</div>
+      <h3 className="mt-2 text-[18px] font-semibold text-black/85">{title}</h3>
+      <p className="mt-2 text-[13px] leading-6 text-black/55">{description}</p>
+    </div>
+
+    <div className="shrink-0 rounded-[16px] border border-black/10 bg-white/55 p-3">
+      <Icon className="h-5 w-5 text-black/70" />
+    </div>
+  </div>
+
+  <div className="relative mt-4 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(0,0,0,0.12),transparent)]" />
+
+  <ul className="relative mt-4 space-y-2 text-[13px] text-black/60">
+    {bullets.map((b) => (
+      <li key={b} className="flex items-start gap-2">
+        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-black/30" />
+        <span className="min-w-0">{b}</span>
+      </li>
+    ))}
+  </ul>
+</article>
+
+);
+}
+
+function StatCard({ label, value, icon: Icon }: { label: string; value: string; icon: any }) {
+return (
+<div className="rounded-[18px] border border-black/10 bg-white/30 px-4 py-3">
+<div className="flex items-center justify-between gap-3">
+<div>
+<div className="text-[11px] font-medium tracking-[0.22em] text-black/45">{label}</div>
+<div className="mt-1 text-[14px] font-semibold text-black/80">{value}</div>
+</div>
+<Icon className="h-4 w-4 text-black/55" />
+</div>
+</div>
+);
+}
+
+function DemoAccount() {
+return (
+<div className="rounded-[24px] border border-black/10 bg-white/35 p-5 backdrop-blur-sm shadow-[0_1px_0_rgba(255,255,255,0.65)]">
+<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<div>
+<div className="text-[11px] font-medium tracking-[0.22em] text-black/45">CUENTA DEMO</div>
+<div className="mt-2 flex flex-wrap items-center gap-2">
+<div className="text-[18px] font-semibold text-black/85">Studio Nude</div>
+<Pill>
+<BadgeCheck className="mr-2 h-4 w-4" />
+Verificada
+</Pill>
+<Pill>
+<Building2 className="mr-2 h-4 w-4" />
+B2B Ready
+</Pill>
+</div>
+<p className="mt-2 text-[13px] leading-6 text-black/55">
+Esta landing es una <span className="font-semibold text-black/75">muestra visual</span> de cómo se sentiría una
+experiencia B2B real: escalas, reorden, crédito, pedidos recurrentes y logística.
+</p>
 </div>
 
+    <div className="flex flex-wrap gap-2">
+      <CTAButton href="/b2b/catalogo" variant="secondary">
+        Ver catálogo B2B <ArrowRight className="h-4 w-4" />
+      </CTAButton>
+      <CTAButton href="/b2b/carrito">
+        Ir directo al carrito <ArrowRight className="h-4 w-4" />
+      </CTAButton>
+    </div>
+  </div>
 
-  <Container className="relative">
-    <div className="max-w-5xl">
-      <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white/80 px-3 py-1.5 shadow-[0_6px_16px_rgba(43,33,28,0.03)] backdrop-blur-sm">
-        <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-          B2B vision · negocio · volumen
-        </span>
+  <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
+    <StatCard label="Condición" value="Neto 7" icon={FileText} />
+    <StatCard label="Escala activa" value="Mayoreo" icon={Layers} />
+    <StatCard label="Frecuencia" value="Reorden" icon={Repeat2} />
+    <StatCard label="Entrega" value="24–48h" icon={Truck} />
+  </div>
+</div>
+
+);
+}
+
+export default function B2BLandingPage() {
+return (
+<SectionShell
+eyebrow="B2B"
+title="B2B listo para operación real"
+subtitle="Una experiencia pensada para salones y distribuidoras: catálogo por escala, pedidos recurrentes, crédito y señales claras para comprar mejor."
+rightSlot={
+<div className="hidden items-center gap-2 md:flex">
+<Pill>
+<ShieldCheck className="mr-2 h-4 w-4" />
+Operación clara
+</Pill>
+<Pill>
+<BarChart3 className="mr-2 h-4 w-4" />
+Decisiones rápidas
+</Pill>
+</div>
+}
+>
+{/* HERO */}
+<div className="relative overflow-hidden rounded-[26px] border border-black/10 bg-white/35 p-6 backdrop-blur-sm shadow-[0_1px_0_rgba(255,255,255,0.65)]">
+{/* Decorative subtle gradients */}
+<div className="pointer-events-none absolute inset-0 opacity-100 [background-image:radial-gradient(120%_120%_at_20%_10%,rgba(0,0,0,0.06)_0%,transparent_55%),radial-gradient(120%_120%_at_85%_85%,rgba(0,0,0,0.04)_0%,transparent_60%)]" />
+<div className="relative">
+<div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+<div className="max-w-2xl">
+<div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/55 px-3 py-1 text-[11px] font-medium tracking-[0.22em] text-black/60">
+<Sparkles className="h-4 w-4" />
+DEMO VISUAL B2B
+</div>
+
+          <h2 className="mt-4 text-[28px] font-semibold leading-tight text-black/90 sm:text-[34px]">
+            Menudeo, mayoreo y volumen <span className="text-black/60">en una sola experiencia.</span>
+          </h2>
+
+          <p className="mt-3 text-[14px] leading-7 text-black/60">
+            El objetivo no es “solo vender”. Es que el cliente entienda rápido:{" "}
+            <span className="font-semibold text-black/75">escala, margen, reorden y envío</span>. Con una interfaz premium
+            y muy clara.
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            <Pill>Escalas por cantidad</Pill>
+            <Pill>Pedido recurrente</Pill>
+            <Pill>Crédito / Neto</Pill>
+            <Pill>Logística</Pill>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            <CTAButton href="/b2b/catalogo" variant="secondary">
+              Ver catálogo B2B <ArrowRight className="h-4 w-4" />
+            </CTAButton>
+            <CTAButton href="/b2b/carrito">
+              Ir directo al carrito <ArrowRight className="h-4 w-4" />
+            </CTAButton>
+          </div>
+        </div>
+
+        {/* Mini “preview cards” */}
+        <div className="grid w-full gap-3 sm:grid-cols-2 lg:max-w-[520px]">
+          <div className="rounded-[20px] border border-black/10 bg-white/30 p-4">
+            <div className="flex items-center justify-between">
+              <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">ESCALA</div>
+              <Layers className="h-4 w-4 text-black/55" />
+            </div>
+            <div className="mt-2 text-[16px] font-semibold text-black/85">Mayoreo → Mayoreo+ → Volumen</div>
+            <div className="mt-2 text-[13px] text-black/55">El precio se adapta al pedido.</div>
+          </div>
+
+          <div className="rounded-[20px] border border-black/10 bg-white/30 p-4">
+            <div className="flex items-center justify-between">
+              <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">PAGO</div>
+              <CreditCard className="h-4 w-4 text-black/55" />
+            </div>
+            <div className="mt-2 text-[16px] font-semibold text-black/85">Neto 7 / Transferencia</div>
+            <div className="mt-2 text-[13px] text-black/55">Condiciones visibles y ordenadas.</div>
+          </div>
+
+          <div className="rounded-[20px] border border-black/10 bg-white/30 p-4">
+            <div className="flex items-center justify-between">
+              <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">REORDEN</div>
+              <Repeat2 className="h-4 w-4 text-black/55" />
+            </div>
+            <div className="mt-2 text-[16px] font-semibold text-black/85">Pedidos recurrentes</div>
+            <div className="mt-2 text-[13px] text-black/55">Compra frecuente con menos fricción.</div>
+          </div>
+
+          <div className="rounded-[20px] border border-black/10 bg-white/30 p-4">
+            <div className="flex items-center justify-between">
+              <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">TIEMPO</div>
+              <Clock className="h-4 w-4 text-black/55" />
+            </div>
+            <div className="mt-2 text-[16px] font-semibold text-black/85">24–48h</div>
+            <div className="mt-2 text-[13px] text-black/55">Señales claras para preparar envío.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Demo Account Block */}
+  <div className="mt-6">
+    <DemoAccount />
+  </div>
+
+  {/* Features */}
+  <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+    <FeatureCard
+      icon={Package}
+      eyebrow="CATÁLOGO B2B"
+      title="Compra por escala, no por intuición"
+      description="El cliente ve el precio correcto según su volumen, con lectura comercial clara."
+      bullets={["Escalas visibles por cantidad", "Ahorros vs menudeo", "Filtros y búsqueda rápida"]}
+    />
+
+    <FeatureCard
+      icon={FileText}
+      eyebrow="OPERACIÓN"
+      title="Pedido listo para envío"
+      description="Datos pensados para preparar paquetería sin perder tiempo: peso, presentación y notas."
+      bullets={["Resumen de pedido", "Peso/medidas estimadas", "Notas por cliente/entrega"]}
+    />
+
+    <FeatureCard
+      icon={BarChart3}
+      eyebrow="CRECIMIENTO"
+      title="Reorden y historial"
+      description="Una vista que facilita compras recurrentes, reposición y hábitos de compra."
+      bullets={["Productos frecuentes", "Reorden en 1 click", "Señales de rotación"]}
+    />
+  </div>
+
+  {/* Bottom CTA */}
+  <div className="mt-8 overflow-hidden rounded-[26px] border border-black/10 bg-white/35 p-6 backdrop-blur-sm shadow-[0_1px_0_rgba(255,255,255,0.65)]">
+    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">SIGUIENTE PASO</div>
+        <div className="mt-2 text-[20px] font-semibold text-black/85">
+          ¿Quieres que el cliente lo “sienta real”?
+        </div>
+        <p className="mt-1 text-[13px] leading-6 text-black/55">
+          Entra al catálogo B2B y agrega productos: el carrito B2B se comporta como si ya existiera una operación real.
+        </p>
       </div>
 
-      <h1 className="font-display text-[2rem] font-semibold leading-[0.98] tracking-[-0.055em] text-[var(--color-text)] sm:text-[2.6rem] md:text-[3.5rem]">
-        La tienda no solo vende producto;
-        <span className="block">también puede atender negocio.</span>
-      </h1>
-
-      <p className="mt-4 max-w-4xl text-[0.98rem] leading-8 text-[var(--color-muted)] md:text-[1.02rem]">
-        Este bloque conceptual ayuda a visualizar la evolución hacia una operación más robusta:
-        compras por volumen, solicitudes de cotización, recompra y atención comercial para salones
-        y distribuidores.
-      </p>
-
-      <div className="mt-4 h-px w-20 bg-[linear-gradient(90deg,var(--color-accent-dark),transparent)]" />
-    </div>
-
-    <div className="mt-8 grid gap-5 md:grid-cols-2">
-      {features.map((feature) => (
-        <article
-          key={feature.title}
-          className="rounded-[26px] border border-[var(--color-line)] bg-white/90 p-6 shadow-[0_12px_26px_rgba(43,33,28,0.03)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_38px_rgba(43,33,28,0.05)]"
-        >
-          <h3 className="text-[1.8rem] font-semibold tracking-[-0.04em] text-[var(--color-text)]">
-            {feature.title}
-          </h3>
-          <p className="mt-3 text-[1rem] leading-8 text-[var(--color-muted)]">{feature.text}</p>
-        </article>
-      ))}
-    </div>
-
-    <div className="mt-8 rounded-[30px] border border-[var(--color-line)] bg-[rgba(255,255,255,0.82)] p-7 shadow-[0_14px_30px_rgba(43,33,28,0.03)] backdrop-blur-sm md:p-8">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
-        Próxima evolución
-      </p>
-
-      <h2 className="mt-3 font-display text-[1.7rem] font-semibold leading-[1.04] tracking-[-0.045em] md:text-[2.4rem]">
-        Preparado para crecer a login comercial,
-        <span className="block">reglas de precio e integración futura.</span>
-      </h2>
-
-      <p className="mt-4 max-w-3xl text-[1rem] leading-8 text-[var(--color-muted)]">
-        La intención del MVP es mostrar desde hoy una dirección comercial seria, sin necesidad de
-        construir todavía toda la lógica real de operación.
-      </p>
-
-      <div className="mt-5">
-        <Button href="/catalogo">Ver catálogo comercial</Button>
+      <div className="flex flex-wrap gap-2">
+        <CTAButton href="/b2b/catalogo" variant="secondary">
+          Ir al catálogo B2B <ArrowRight className="h-4 w-4" />
+        </CTAButton>
+        <CTAButton href="/b2b/carrito">
+          Abrir carrito B2B <ArrowRight className="h-4 w-4" />
+        </CTAButton>
       </div>
     </div>
-  </Container>
-</section>
+  </div>
+</SectionShell>
 
-)
+);
 }
