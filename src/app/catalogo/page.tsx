@@ -6,6 +6,7 @@ import { useMemo, useState } from "react"
 import { SectionShell } from "@/components/ui/SectionShell"
 import { Search, X } from "lucide-react"
 
+
 type TopFilter = "Todos" | "Nuevo" | "Oferta" | "Mayoreo"
 type CategoryFilter =
 | "Todas"
