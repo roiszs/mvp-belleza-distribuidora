@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { SectionShell } from "@/components/ui/SectionShell"
 import { Search } from "lucide-react"
 
@@ -12,6 +13,8 @@ wholesalePrice?: number
 image: string
 available?: boolean
 tags?: string[]
+// ✅ IMPORTANTE: este slug debe existir para que "Ver" vaya a /producto/[slug]
+slug: string
 }
 
 const TOP_FILTERS = ["Todos", "Nuevo", "Oferta", "Mayoreo"] as const
@@ -25,6 +28,7 @@ const CATEGORY_FILTERS = [
 ] as const
 
 // ✅ Mock: reemplaza esto con tus productos reales
+// IMPORTANTE: Asegúrate que estos slugs coincidan con tu ruta real /producto/[slug]
 const products: Product[] = [
 {
 id: "p1",
@@ -36,6 +40,7 @@ wholesalePrice: 85,
 image: "/images/products/gel-semipermanente-a.jpeg",
 available: true,
 tags: ["MAYOREO"],
+slug: "gel-semipermanente-lemussa-gama-a",
 },
 {
 id: "p2",
@@ -47,6 +52,8 @@ wholesalePrice: 85,
 image: "/images/products/gel-semipermanente-.jpeg",
 available: true,
 tags: ["NUEVO"],
+// ✅ Este es el que mostraste en tu screenshot
+slug: "gel-semipermanente-le-mussa-the-new-nude",
 },
 {
 id: "p3",
@@ -58,6 +65,7 @@ wholesalePrice: 75,
 image: "/images/products/polvo-acrilico.jpeg",
 available: true,
 tags: ["MAYOREO"],
+slug: "polvo-acrilico-para-una-12-piezas",
 },
 {
 id: "p4",
@@ -69,6 +77,7 @@ wholesalePrice: 75,
 image: "/images/products/efecto-espejo-azul.jpeg",
 available: true,
 tags: ["OFERTA"],
+slug: "efecto-espejo-6pz-azul",
 },
 {
 id: "p5",
@@ -80,6 +89,7 @@ wholesalePrice: 85,
 image: "/images/products/flake-1.jpeg",
 available: true,
 tags: ["TOP VENTAS"],
+slug: "efecto-flake-12pz",
 },
 {
 id: "p6",
@@ -91,6 +101,7 @@ wholesalePrice: 85,
 image: "/images/products/coffin-1.jpeg",
 available: true,
 tags: ["NUEVO"],
+slug: "tips-soft-gel-coffin-cristal-240pz",
 },
 ]
 
@@ -113,6 +124,8 @@ return (
 function ProductCard({ p }: { p: Product }) {
 const discount =
 typeof p.wholesalePrice === "number" ? Math.max(0, p.price - p.wholesalePrice) : 0
+
+const isAvailable = p.available !== false
 
 return (
 <article
@@ -142,7 +155,7 @@ className={[
 
       <div className="absolute right-3 top-3 z-10">
         <span className="rounded-full border border-black/10 bg-white/70 px-3 py-1 text-[11px] font-medium text-black/65">
-          {p.available === false ? "No disponible" : "Disponible"}
+          {isAvailable ? "Disponible" : "No disponible"}
         </span>
       </div>
 
@@ -171,41 +184,27 @@ className={[
         </div>
       </div>
 
-      <p className="mt-2 line-clamp-2 text-[13px] leading-6 text-black/55">
-        {p.description}
-      </p>
+      <p className="mt-2 line-clamp-2 text-[13px] leading-6 text-black/55">{p.description}</p>
     </div>
 
     {/* Precio */}
     <div className="mt-5 rounded-[18px] border border-black/10 bg-white/30 px-4 py-3">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">
-            PRECIO
-          </div>
+          <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">PRECIO</div>
           <div className="mt-1 flex items-baseline gap-2">
-            <span className="text-[20px] font-semibold text-black/90">
-              {mxn(p.price)}
-            </span>
-            <span className="text-[11px] font-medium tracking-[0.18em] text-black/45">
-              MXN
-            </span>
+            <span className="text-[20px] font-semibold text-black/90">{mxn(p.price)}</span>
+            <span className="text-[11px] font-medium tracking-[0.18em] text-black/45">MXN</span>
           </div>
         </div>
 
         {typeof p.wholesalePrice === "number" && (
           <div className="text-right">
-            <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">
-              MAYOREO
-            </div>
+            <div className="text-[11px] font-medium tracking-[0.22em] text-black/45">MAYOREO</div>
             <div className="mt-1 text-[14px] font-semibold text-black/80">
               {mxn(p.wholesalePrice)}
             </div>
-            {discount > 0 && (
-              <div className="mt-1 text-[12px] text-black/45">
-                Ahorra {mxn(discount)}
-              </div>
-            )}
+            {discount > 0 && <div className="mt-1 text-[12px] text-black/45">Ahorra {mxn(discount)}</div>}
           </div>
         )}
       </div>
@@ -215,16 +214,22 @@ className={[
     <div className="mt-4 flex items-center gap-2">
       <button
         type="button"
-        className="h-11 flex-1 rounded-full bg-black px-4 text-[13px] font-medium text-white transition hover:opacity-90"
+        disabled={!isAvailable}
+        className={[
+          "h-11 flex-1 rounded-full bg-black px-4 text-[13px] font-medium text-white transition hover:opacity-90",
+          !isAvailable ? "opacity-40 cursor-not-allowed hover:opacity-40" : "",
+        ].join(" ")}
       >
         Agregar
       </button>
-      <button
-        type="button"
-        className="h-11 rounded-full border border-black/10 bg-white/55 px-5 text-[13px] font-medium text-black/75 transition hover:bg-white/70"
+
+      {/* ✅ AQUÍ está el fix: Link a /producto/[slug] */}
+      <Link
+        href={`/producto/${p.slug}`}
+        className="h-11 rounded-full border border-black/10 bg-white/55 px-5 text-[13px] font-medium text-black/75 transition hover:bg-white/70 inline-flex items-center justify-center"
       >
         Ver
-      </button>
+      </Link>
     </div>
   </div>
 </article>
