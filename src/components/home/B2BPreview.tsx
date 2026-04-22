@@ -70,7 +70,6 @@ subtitle="Este bloque conceptual ayuda a visualizar la evolución hacia una oper
 <div className="absolute right-10 top-24 h-56 w-56 rounded-full bg-[rgba(0,0,0,0.05)] blur-3xl" />
 </div>
 
-```
     {/* Top row: headline card + account card */}
     <div className="grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">
       {/* Card grande izquierda */}
@@ -130,20 +129,35 @@ subtitle="Este bloque conceptual ayuda a visualizar la evolución hacia una oper
         </div>
 
         <div className="relative mt-5 flex flex-col gap-2 sm:flex-row">
-          <Link
-            href="/b2b"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-black px-5 text-[13px] font-medium text-white transition hover:opacity-90"
-          >
-            Ver visión B2B <ArrowUpRight className="ml-2 h-4 w-4" />
-          </Link>
+        <Link
+          href="/b2b"
+          className={[
+            "inline-flex h-11 items-center justify-center rounded-full",
+            "border border-black/10 bg-white/60",
+            "px-5 text-[13px] font-semibold text-black/80",
+            "shadow-[0_1px_0_rgba(255,255,255,0.75)]",
+            "transition hover:bg-white/80 hover:border-black/15 hover:shadow-[0_10px_22px_rgba(0,0,0,0.08)]",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/15",
+            "whitespace-nowrap",
+          ].join(" ")}
+        >
+          Ver visión B2B <ArrowUpRight className="ml-2 h-4 w-4 text-black/55" />
+        </Link>
 
-          <Link
-            href="/catalogo"
-            className="inline-flex h-11 items-center justify-center rounded-full border border-black/10 bg-white/55 px-5 text-[13px] font-medium text-black/75 transition hover:bg-white/70"
-          >
-            Ver catálogo
-          </Link>
-        </div>
+        <Link
+          href="/catalogo"
+          className={[
+            "inline-flex h-11 items-center justify-center rounded-full",
+            "border border-black/10 bg-white/55",
+            "px-5 text-[13px] font-medium text-black/75",
+            "transition hover:bg-white/70 hover:border-black/15",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/15",
+            "whitespace-nowrap",
+          ].join(" ")}
+        >
+          Ver catálogo
+        </Link>
+      </div>
       </div>
 
       {/* Card derecha (cuenta / confianza) */}

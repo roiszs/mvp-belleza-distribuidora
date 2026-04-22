@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Search, BadgeCheck, Building2, FileText, Truck, Sparkles } from "lucide-react";
@@ -469,16 +471,18 @@ Neto 7
     ))}
   </div>
 
-  {/* Footer small nav */}
-  <div className="mt-8 flex items-center justify-between text-[13px] text-black/55">
-    <span>{filtered.length} productos</span>
-    <Link className="rounded-full border border-black/10 bg-white/35 px-4 py-2 hover:bg-white/55" href="/b2b">
-      Ver visión B2B
-    </Link>
-  </div>
-</SectionShell>
+ {/* Footer small nav */}
+<div className="mt-8 flex items-center justify-between text-[13px] text-black/55">
+  <span>{filtered.length} productos</span>
 
+  <Link
+    href="/b2b"
+    className="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-black/10 bg-white/60 px-5 text-[13px] font-semibold text-black/80 shadow-[0_1px_0_rgba(255,255,255,0.75)] transition hover:border-black/15 hover:bg-white/80 hover:shadow-[0_10px_22px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/15"
+  >
+    Ver visión B2B <span className="text-black/40">↗</span>
+  </Link>
+</div>
+
+</SectionShell>
 );
 }
-
-import { useState } from "react";
